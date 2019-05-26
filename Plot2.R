@@ -17,7 +17,7 @@ data <- cbind(data, date_time)
 
 
 png(filename="./ExData_Plotting1/plot2.png", bg="white")
-with(data, plot(date_time, Global_active_power, type="S", pch = 1, col="black", xlab = "", ylab = "Global Active Power (kilowatts)"))
+with(data, plot(date_time, Global_active_power, type="l", col="black", xlab = "", ylab = "Global Active Power (kilowatts)"))
 dev.off()
 
 

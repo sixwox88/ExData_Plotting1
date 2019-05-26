@@ -12,14 +12,19 @@ date_time <- paste(as.character(data$Date), as.character(data$Time))
 date_time <- as.POSIXct(strptime(date_time, "%Y-%m-%d %H:%M:%S"), tz = "Asia/Seoul")
 data <- cbind(data, date_time)
 
-#png(filename="./ExData_Plotting1/plot4.png", bg="white")
+png(filename="./ExData_Plotting1/plot4.png", bg="white")
 par(mfrow = c(2, 2))
-with(data, plot(date_time, Sub_metering_1, type="S", pch = 1, col="black", xlab = "", ylab = "Energy sub metering"))
-with(data, lines(date_time, Sub_metering_2, type="S", pch = 1, col="red"))
-with(data, lines(date_time, Sub_metering_3, type="S", pch = 1, col="blue"))
+with(data, plot(date_time, Global_active_power, type="S", col="black", xlab = "", ylab = "Global Active Power (kilowatts)"))
+
+with(data, plot(date_time, Voltage, type="S",  col="black", xlab = "datetime", ylab = "Voltage"))
+
+with(data, plot(date_time, Sub_metering_1, type="l",  col="black", xlab = "", ylab = "Energy sub metering"))
+with(data, lines(date_time, Sub_metering_2, type="l", col="red"))
+with(data, lines(date_time, Sub_metering_3, type="l",  col="blue"))
 legend("topright", lty = 1, col = c("black","blue", "red"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
+with(data, plot(date_time, Global_reactive_power, type="l",  col="black", xlab = "datetime", ylab = "Global_reactive_power"))
 
-#dev.off()
+dev.off()
 
 
